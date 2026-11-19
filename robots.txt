@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aleks-army.github.io/masazhyst/sitemap.xml

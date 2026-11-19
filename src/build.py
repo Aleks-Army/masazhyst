@@ -10,6 +10,7 @@ SOURCES = [("NAEMT TCCC","https://www.naemt.org/education/trauma-education/naemt
  ("AJP-4.10(A) — Role 1–3","https://shape.nato.int/resources/site6362/medica-secure/publications/ajp-4.10(a).pdf"),
  ("ATP 4-02.2 — 9-Line / MIST","https://armypubs.army.mil/epubs/DR_pubs/DR_a/pdf/web/ARN17834_ATP%204-02x2%20FINAL%20WEB.pdf"),
  ("BUMEDINST 1510.25B — Tier 4, Train-the-Trainer","https://www.med.navy.mil/Portals/62/Documents/BUMED/Directives/Instructions/1510.25B.pdf")]
+SITE = "https://aleks-army.github.io/masazhyst/"
 def page(C):
     b = C["base"]; uk = C["lang"]=="uk"
     nav = "".join(f'<a href="#{i}">{t}</a>' for i,t in C["nav"])
@@ -41,15 +42,19 @@ def page(C):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{C["title"]}</title>
 <meta name="description" content="{html.escape(C["desc"])}">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0A1420">
-<link rel="alternate" hreflang="uk" href="{alt_uk}">
-<link rel="alternate" hreflang="en" href="{alt_en}">
+<link rel="canonical" href="{SITE}{"" if uk else "en/"}">
+<link rel="alternate" hreflang="uk" href="{SITE}">
+<link rel="alternate" hreflang="en" href="{SITE}en/">
+<link rel="alternate" hreflang="x-default" href="{SITE}">
 <link rel="icon" href="{b}favicon.svg" type="image/svg+xml">
 <link rel="icon" href="{b}favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{b}apple-touch-icon.png">
 <link rel="preload" href="{b}assets/fonts/unbounded.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{b}assets/style.css">
+<meta property="og:url" content="{SITE}{"" if uk else "en/"}">
+<meta property="og:type" content="website">
 <meta property="og:title" content="{C["title"]}">
 <meta property="og:description" content="{html.escape(C["desc"])}">
 </head>
